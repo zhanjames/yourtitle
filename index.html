@@ -3,15 +3,21 @@
 Created using JS Bin
 http://jsbin.com
 
-Copyright (c) 2015 by anonymous (http://jsbin.com/herubedawu/1/edit)
+Copyright (c) 2015 by anonymous (http://jsbin.com/minucuhofa/1/edit)
 
 Released under the MIT license: http://jsbin.mit-license.org
 -->
 <meta name="robots" content="noindex">
-<html>
+<html ng-app>
 <head>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
   <meta charset="utf-8">
-  <title>YOUR_TITLE<style id="jsbin-css">
+  <title>angular範例：控制與顯示</title>
+  <body style="color:gainsboro;">
+ 
+  <h1>歡迎</h1>
+ <iframe allowtransparency ="true" width="800" height="650" id="game" src="http://scratch.mit.edu/projects/40596156/#fullscreen" frameborder="0" allowfullscreen></iframe>
+<style id="jsbin-css">
 html {
     background-image:url(http://static.ettoday.net/images/613/d613693.jpg)
 }
@@ -22,36 +28,116 @@ html {
 }
 #game{
    margin-left:500px;
+  
+  
 }
-#words{
-  margin-top:-600px;
-  margin-left:20px;
-  color:black;
 }
+#ctrl-port > ol > li{
+  cursor: pointer;
+
+}
+
+
+#ctrl-port > ol > li:hover {
+  background-color: lightblue;
+
+}
+
+
+sub {
+  font-size:6px;
+color:red
+}
+
+
+
+#view-port .crop {
+  
+  width: 262px;
+  height: 162px;
+  overflow:hidden;
+
+}
+
+#view-port img {
+  margin-top:-50px;
+  width: 230px;
+
+}
+#view-port.crop {
+  
+ 
+}
+#ctrl-port{margin-top:-640px;
+ 
+}
+
 #back{
   width:450px;
-  height:350px;
+  height:570px;
   border:3px solid;
-  margin-top:-300px;
-  background-color:hsla(0,100%, 100%, 0.6) ;
+  margin-top:-530px;
+  background-color:black
   
   
 }
-}
+
+
 </style>
-</title>
-<body style="color:gainsboro;">
- 
-  <h1>歡迎</h1>
- <iframe allowtransparency ="true" width="800" height="650" id="game" src="http://scratch.mit.edu/projects/40596156/#fullscreen" frameborder="0" allowfullscreen></iframe>
-  <div id="words">
-  <h1>大家好歡迎來玩我們的小遊戲</h1>  <h1>遊戲玩法</h1>
-  <h1>W鍵攻擊</h1>
-  <h1>空白鍵攻擊</h1>
-  <h1>A鍵回復</h1>
+</head>
+  
+<body 
+      ng-controller = "myCtrl as three">
+  
+  <div id = "ctrl-port">
+    
+    <ol>   
+      <li ng-repeat = "m in three.model" ng-click = "three.myHero = m">
+          {{m.name}}
+      
+      </li>
+    </ol>
+  </div>
+  
+ <hr/>
+  
+  <div id = "view-port">
+    <h1>{{three.myHero.name}}</h1>
+    
+    <div class = "crop">
+     <img ng-src = "{{three.myHero.img}}"/>
+
+    </div>
+      
+    <br/>
+    
+    
+    <ul>
+      <li>介紹：{{three.myHero.str}}</li>
+      
+     </ul>
+    
+    
+   
+  
   </div>
   <div id="back">
-  </div>
-   <p></p> 
-</body>
-</html>
+   </div>
+  
+<script id="jsbin-javascript">
+function myCtrl() {
+   this.model = [
+     
+      {id:0, name:'雙子宮 ‧ 加斯陀與波魯克斯', 'str':'召喚獸 神族 黃道十二宮',int:'30' , img:'http://vignette4.wikia.nocookie.net/tos/images/d/d6/360i.png/revision/latest/scale-to-width/100?cb=20140618194418&path-prefix=zh', },
+     
+    {id:1, name:'大地霸主鄧肯 ', 'str':'召喚獸 人類 主角', int:'50',img:'http://vignette2.wikia.nocookie.net/tos/images/e/e2/410i.png/revision/latest/scale-to-width/100?cb=20140618201617&path-prefix=zh'},
+     
+    {id:2, name:'雖死猶在 ‧ 毒龍尼德霍格', 'str':'召喚獸 龍類', int:'100',img:'http://vignette3.wikia.nocookie.net/tos/images/3/3c/290i.png/revision/latest/scale-to-width/100?cb=20140618185739&path-prefix=zh'},
+     
+    {id:3, name:'不滅戰意 ‧ 費雷', 'str':'召喚獸 神族 北歐神', int:'85',img:'http://vignette2.wikia.nocookie.net/tos/images/f/fa/506i.png/revision/latest/scale-to-width/100?cb=20140219110719&path-prefix=zh',}  
+  ];
+     
+    this.myHero = this.model[0];
+       
+}
+</script>
