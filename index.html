@@ -3,7 +3,7 @@
 Created using JS Bin
 http://jsbin.com
 
-Copyright (c) 2015 by anonymous (http://jsbin.com/yusoyevake/2/edit)
+Copyright (c) 2015 by anonymous (http://jsbin.com/mikitekiwa/3/edit)
 
 Released under the MIT license: http://jsbin.mit-license.org
 -->
@@ -12,7 +12,7 @@ Released under the MIT license: http://jsbin.mit-license.org
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
   <meta charset="utf-8">
-  <title>angular範例：控制與顯示</title>
+  <title>魔神之塔</title>
   <body style="color:gainsboro;">
  
   <h1>歡迎</h1>
@@ -74,9 +74,9 @@ color:red
 
 #back{
   width:450px;
-  height:560px;
+  height:680px;
   border:3px solid;
-  margin-top:-510px;
+  margin-top:-600px;
   background-color:black
   
   
@@ -106,7 +106,7 @@ color:red
     
     <div class = "crop">
      <img ng-src = "{{three.myHero.img}}"/>
-
+                             
     </div>
       
     <br/>
@@ -114,12 +114,19 @@ color:red
     
     <ul>
       <li>介紹：{{three.myHero.str}}</li>
-      
+     
      </ul>
     
     
-   
   
+               
+   <div ng-controller="myCtrl" ng-app>
+    <p ng-show="mouseMode">聽說完魔神之塔可以添福氣
+     
+     </p>
+            
+  <img ng-mouseover="mouseMode=true" ng-mouseleave="mouseMode=false" ng-src="http://i.imgur.com/sN8vpMS.png%22%20alt=" alt="" />
+  </div>
   </div>
   <div id="back">
    </div>
@@ -137,7 +144,7 @@ function myCtrl() {
     {id:3, name:'不滅戰意 ‧ 費雷', 'str':'召喚獸 神族 北歐神', int:'85',img:'http://vignette2.wikia.nocookie.net/tos/images/f/fa/506i.png/revision/latest/scale-to-width/100?cb=20140219110719&path-prefix=zh',}  
   ];
      
-    this.myHero = this.model[0];
+   
        
 }
 </script>
